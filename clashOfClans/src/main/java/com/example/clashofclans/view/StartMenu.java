@@ -65,7 +65,7 @@ public class StartMenu {
     }
     private void setSecondRootSetting(){
         secondRoot=new AnchorPane();
-        ImageView loadingScreen=new ImageView(new Image("file:C:\\Users\\j-tech.ir\\Desktop\\uni\\game\\final-project-AminHosseinS\\clashOfClans\\src\\main\\resources\\loadingScreen.jpg"));
+        ImageView loadingScreen=new ImageView(new Image("C:\\Users\\j-tech.ir\\Desktop\\uni\\game\\final-project-game-aminhosseins\\clashOfClans\\src\\main\\resources\\loadingScreen.jpg"));
         loadingScreen.setFitWidth(1280);
         loadingScreen.setFitHeight(700);
         secondRoot.getChildren().add(loadingScreen);
@@ -132,6 +132,48 @@ public class StartMenu {
         secondRoot.getChildren().add(btn_signUp);
     }
     private void setBtn_loginSetting(){
+        btn_login=new Button();
 
+        Label label=new Label("Log in");
+        label.setAlignment(Pos.CENTER);
+        label.setFont(Font.font("Impact",40));
+        label.setTextFill(Color.rgb(250,250,250));
+        label.setStyle("-fx-effect: dropshadow( one-pass-box , black , 4 , 0.0 , 1 , 0 )");
+        btn_login.setGraphic(label);
+
+        Rectangle rectangle=new Rectangle();
+        rectangle.setWidth(300);
+        rectangle.setHeight(80);
+        rectangle.setArcHeight(20);
+        rectangle.setArcWidth(20);
+        btn_login.setShape(rectangle);
+
+        btn_login.setBackground(Background.fill(Color.rgb(245,150,25)));
+        btn_login.setPrefWidth(300);
+        btn_login.setPrefHeight(80);
+        btn_login.setLayoutY(400);
+        btn_login.setLayoutX(490);
+
+        InnerShadow innerShadow=new InnerShadow();
+        innerShadow.setRadius(5);
+        innerShadow.setColor(Color.gray(0.9));
+        DropShadow dropShadow =new DropShadow();
+        dropShadow.setRadius(5);
+        dropShadow.setColor(Color.gray(0.5));
+        dropShadow.setInput(innerShadow);
+        btn_login.setEffect(dropShadow);
+
+        btn_login.addEventHandler(MouseEvent.MOUSE_ENTERED,mouseEvent -> {
+            btn_login.setScaleX(1.02);
+            btn_login.setScaleY(1.02);
+            dropShadow.setRadius(8);
+        });
+        btn_login.addEventHandler(MouseEvent.MOUSE_EXITED,mouseEvent -> {
+            btn_login.setScaleX(1);
+            btn_login.setScaleY(1);
+            dropShadow.setRadius(5);
+        });
+
+        secondRoot.getChildren().add(btn_login);
     }
 }
