@@ -10,10 +10,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class PlayerManager {
-    public static void signUpOperation(String name,String password,int mapID) throws SQLException, DuplicateNameException, InvalidPasswordException {
+    public static void signUpOperation(String name,String password) throws SQLException, DuplicateNameException, InvalidPasswordException {
         isNameDuplicate(name);
         passwordFormatChecker(password);
-        SQLManager.setNewPlayer(name,password,mapID);
+        SQLManager.setNewPlayer(name,password);
     }
     private static void isNameDuplicate(String name) throws SQLException, DuplicateNameException {
         ArrayList<String> names= SQLManager.getNames();

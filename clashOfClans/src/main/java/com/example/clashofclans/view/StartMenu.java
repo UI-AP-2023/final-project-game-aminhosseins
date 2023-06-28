@@ -16,6 +16,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 public class StartMenu {
@@ -31,7 +32,7 @@ public class StartMenu {
         setStageSetting();
     }
 
-    public void show(){
+    private void show(){
         stage.show();
 
         FadeTransition transition=new FadeTransition();
@@ -53,7 +54,7 @@ public class StartMenu {
         stage.setScene(scene);
         stage.setMaximized(true);
         stage.setResizable(false);
-
+        show();
     }
     private void setFirstRootSetting(){
         firstRoot=new AnchorPane();
@@ -82,7 +83,7 @@ public class StartMenu {
         lbl_developerName.setLayoutY(320);
         lbl_developerName.setLayoutX(490);
         lbl_developerName.setAlignment(Pos.CENTER);
-        lbl_developerName.setTextFill(Color.rgb(250,250,250));
+        lbl_developerName.setTextFill(Color.rgb(240,240,240));
 
         firstRoot.getChildren().add(lbl_developerName);
     }
@@ -127,6 +128,9 @@ public class StartMenu {
             btn_signUp.setScaleX(1);
             btn_signUp.setScaleY(1);
             dropShadow.setRadius(5);
+        });
+        btn_signUp.addEventHandler(MouseEvent.MOUSE_CLICKED,mouseEvent -> {
+            SignUpMenu signUpMenu=new SignUpMenu(stage);
         });
 
         secondRoot.getChildren().add(btn_signUp);

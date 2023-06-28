@@ -29,8 +29,8 @@ public class SQLManager {
         }
         return names;
     }
-    public static void setNewPlayer(String playerName,String playerPassword,int playerMapID) throws SQLException {
-        String SQL="INSERT INTO playersinfo (name,password,mapID) VALUES( '"+playerName+"','"+playerPassword+"',"+playerMapID+")";
+    public static void setNewPlayer(String playerName,String playerPassword) throws SQLException {
+        String SQL="INSERT INTO playersinfo (name,password) VALUES( '"+playerName+"','"+playerPassword+"')";
         Statement sql=connection.prepareStatement(SQL);
         sql.execute(SQL);
     }
