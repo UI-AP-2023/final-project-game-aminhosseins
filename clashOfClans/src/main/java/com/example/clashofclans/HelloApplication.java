@@ -15,11 +15,7 @@ import java.sql.SQLException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException, SQLException {
-        //StartMenu startMenu=new StartMenu();
-        Scene scene=new Scene(new Map().getBase());
-        stage.setScene(scene);
-        stage.setMaximized(true);
-        stage.show();
+        StartMenu startMenu=new StartMenu();
     }
 
     public static void main(String[] args) {

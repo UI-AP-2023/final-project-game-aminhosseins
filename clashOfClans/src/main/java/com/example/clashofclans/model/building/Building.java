@@ -8,14 +8,24 @@ public abstract class Building{
     private int percent;
     private double X;
     private double Y;
-    private double dimension;
+    private double width;
+    private double height;
     private ImageView buildingPhoto;
-    public Building(int HP,int percent,double X,double Y,double dimension,String imgURL){
+    public Building(int HP,int percent,double X,double Y,double width,double height,String imgURL){
         this.HP=HP;
         this.percent=percent;
         this.X=X;
         this.Y=Y;
-        this.dimension=dimension;
+        this.width=width;
+        this.height=height;
         this.buildingPhoto=new ImageView(new Image(imgURL));
+        buildingPhoto.setX(X);
+        buildingPhoto.setY(Y);
+        buildingPhoto.setFitHeight(height);
+        buildingPhoto.setFitWidth(width);
+    }
+
+    public ImageView getBuildingPhoto() {
+        return buildingPhoto;
     }
 }
