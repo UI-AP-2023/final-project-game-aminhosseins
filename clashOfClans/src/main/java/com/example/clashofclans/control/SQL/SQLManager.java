@@ -35,13 +35,23 @@ public class SQLManager {
         sql.execute(SQL);
     }
     public static void updateMapID(int ID,String Name) throws SQLException {
+        String SQL="UPDATE playersinfo SET mapID="+ID+" WHERE name='"+Name+"'";
+        Statement sql=connection.prepareStatement(SQL);
+        sql.execute(SQL);
+    }
+    public static String getPlayerPassword(String name) throws SQLException {
         try {
-
-            String SQL="UPDATE playersinfo SET mapID="+ID+" WHERE name='"+Name+"'";
+            String SQL="Select password FROM playersinfo WHERE name='"+name+"'";
             Statement sql=connection.prepareStatement(SQL);
-            sql.execute(SQL);
+            ResultSet resultSet=sql.executeQuery(SQL);
+            StringBuilder s=new StringBuilder();
+            while (resultSet.next()){
+                s.append(resultSet.getString(1));
+            }
+            return s.toString();
         }catch (SQLException e){
-            System.out.println(e);
+            System.out.println(e.getMessage());
         }
+        return "";
     }
 }

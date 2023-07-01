@@ -177,6 +177,9 @@ public class StartMenu {
             btn_login.setScaleY(1);
             dropShadow.setRadius(5);
         });
+        btn_login.addEventHandler(MouseEvent.MOUSE_CLICKED,mouseEvent -> {
+            LogInMenu logInMenu=new LogInMenu(stage);
+        });
 
         secondRoot.getChildren().add(btn_login);
     }

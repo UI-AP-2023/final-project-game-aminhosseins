@@ -141,7 +141,7 @@ public class ChoosingMapMenu {
         btn_setMap.addEventHandler(MouseEvent.MOUSE_CLICKED,mouseEvent -> {
             try {
                 SQLManager.updateMapID(pg_mapSelector.getCurrentPageIndex()+1,playerName);
-                PlayerBaseMenu playerBaseMenu=new PlayerBaseMenu();
+                PlayerBaseMenu playerBaseMenu=new PlayerBaseMenu(playerName);
                 stage.close();
             }catch (SQLException e){
                 Alert alert=new Alert(Alert.AlertType.ERROR);

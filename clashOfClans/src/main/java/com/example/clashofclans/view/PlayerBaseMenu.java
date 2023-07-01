@@ -8,7 +8,7 @@ public class PlayerBaseMenu {
     private Stage stage;
     private Scene scene;
     private AnchorPane root;
-    public PlayerBaseMenu(){
+    public PlayerBaseMenu(String playerName){
         setStageSetting();
     }
     private void setStageSetting(){
