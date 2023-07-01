@@ -188,7 +188,7 @@ public class SignUpMenu {
         btn_signUp.addEventHandler(MouseEvent.MOUSE_CLICKED,mouseEvent -> {
             try {
                 PlayerManager.signUpOperation(txt_name.getText(),txt_password.getText());
-                ChoosingMapMenu choosingMapMenu=new ChoosingMapMenu();
+                ChoosingMapMenu choosingMapMenu=new ChoosingMapMenu(txt_name.getText());
                 stage.close();
                 owner.close();
             } catch (SQLException e) {

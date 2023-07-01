@@ -1,12 +1,10 @@
 package com.example.clashofclans.view;
 
+import com.example.clashofclans.control.SQL.SQLManager;
 import com.example.clashofclans.model.map.Map;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Pagination;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.Image;
@@ -21,6 +19,8 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+import java.sql.SQLException;
+
 public class ChoosingMapMenu {
     private Stage stage;
     private Scene scene;
@@ -28,7 +28,9 @@ public class ChoosingMapMenu {
     private AnchorPane insidePane;
     private Pagination pg_mapSelector;
     private Button btn_setMap;
-    public ChoosingMapMenu(){
+    private String playerName;
+    public ChoosingMapMenu(String playerName){
+        this.playerName=playerName;
         setStageSetting();
     }
     private void setStageSetting(){
@@ -137,7 +139,17 @@ public class ChoosingMapMenu {
         });
 
         btn_setMap.addEventHandler(MouseEvent.MOUSE_CLICKED,mouseEvent -> {
-            System.out.println(pg_mapSelector.getCurrentPageIndex());
+            try {
+                SQLManager.updateMapID(pg_mapSelector.getCurrentPageIndex()+1,playerName);
+                PlayerBaseMenu playerBaseMenu=new PlayerBaseMenu();
+                stage.close();
+            }catch (SQLException e){
+                Alert alert=new Alert(Alert.AlertType.ERROR);
+                alert.setContentText(e.getMessage());
+                alert.setTitle("Error");
+                alert.setHeaderText("SQL");
+                alert.show();
+            }
         });
 
         insidePane.getChildren().add(btn_setMap);

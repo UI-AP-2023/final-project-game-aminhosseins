@@ -34,5 +34,14 @@ public class SQLManager {
         Statement sql=connection.prepareStatement(SQL);
         sql.execute(SQL);
     }
+    public static void updateMapID(int ID,String Name) throws SQLException {
+        try {
 
+            String SQL="UPDATE playersinfo SET mapID="+ID+" WHERE name='"+Name+"'";
+            Statement sql=connection.prepareStatement(SQL);
+            sql.execute(SQL);
+        }catch (SQLException e){
+            System.out.println(e);
+        }
+    }
 }
