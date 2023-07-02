@@ -4,7 +4,10 @@ import com.example.clashofclans.control.SQL.SQLManager;
 import com.example.clashofclans.exceptions.Entry.DuplicateNameException;
 import com.example.clashofclans.exceptions.Entry.InvalidPasswordException;
 import com.example.clashofclans.exceptions.Entry.InvalidPlayerException;
+import com.example.clashofclans.model.map.Map;
+import com.example.clashofclans.model.player.Player;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -20,6 +23,14 @@ public class PlayerManager {
         isPlayerExist(name);
         passwordFormatChecker(password);
         passwordMatching(password,name);
+    }
+    public static Player readyMainPlayer(String name) throws SQLException {
+        ResultSet resultSet=SQLManager.getPlayerInfo(name);
+        Player player=null;
+        while (resultSet.next()){
+            player=new Player(name,resultSet.getInt(1),resultSet.getInt(2),resultSet.getInt(3),resultSet.getInt(4),resultSet.getInt(5),Map.getAllMaps().get(resultSet.getInt(6)-1));
+        }
+        return player;
     }
     private static void isNameDuplicate(String name) throws SQLException, DuplicateNameException {
         ArrayList<String> names= SQLManager.getNames();

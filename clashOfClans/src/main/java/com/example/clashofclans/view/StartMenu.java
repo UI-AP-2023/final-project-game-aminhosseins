@@ -111,8 +111,8 @@ public class StartMenu {
         btn_signUp.setLayoutX(490);
 
         InnerShadow innerShadow=new InnerShadow();
-        innerShadow.setRadius(5);
-        innerShadow.setColor(Color.gray(0.9));
+        innerShadow.setRadius(20);
+        innerShadow.setColor(Color.rgb(250,180,25));
         DropShadow dropShadow =new DropShadow();
         dropShadow.setRadius(5);
         dropShadow.setColor(Color.gray(0.5));
@@ -152,15 +152,15 @@ public class StartMenu {
         rectangle.setArcWidth(20);
         btn_login.setShape(rectangle);
 
-        btn_login.setBackground(Background.fill(Color.rgb(245,150,25)));
+        btn_login.setBackground(Background.fill(Color.rgb(220,120,25)));
         btn_login.setPrefWidth(300);
         btn_login.setPrefHeight(80);
         btn_login.setLayoutY(400);
         btn_login.setLayoutX(490);
 
         InnerShadow innerShadow=new InnerShadow();
-        innerShadow.setRadius(5);
-        innerShadow.setColor(Color.gray(0.9));
+        innerShadow.setRadius(20);
+        innerShadow.setColor(Color.rgb(250,180,25));
         DropShadow dropShadow =new DropShadow();
         dropShadow.setRadius(5);
         dropShadow.setColor(Color.gray(0.5));

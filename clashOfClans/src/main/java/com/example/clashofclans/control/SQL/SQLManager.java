@@ -40,18 +40,18 @@ public class SQLManager {
         sql.execute(SQL);
     }
     public static String getPlayerPassword(String name) throws SQLException {
-        try {
-            String SQL="Select password FROM playersinfo WHERE name='"+name+"'";
-            Statement sql=connection.prepareStatement(SQL);
-            ResultSet resultSet=sql.executeQuery(SQL);
-            StringBuilder s=new StringBuilder();
-            while (resultSet.next()){
-                s.append(resultSet.getString(1));
-            }
-            return s.toString();
-        }catch (SQLException e){
-            System.out.println(e.getMessage());
+        String SQL="Select password FROM playersinfo WHERE name='"+name+"'";
+        Statement sql=connection.prepareStatement(SQL);
+        ResultSet resultSet=sql.executeQuery(SQL);
+        StringBuilder s=new StringBuilder();
+        while (resultSet.next()){
+            s.append(resultSet.getString(1));
         }
-        return "";
+        return s.toString();
+    }
+    public static ResultSet getPlayerInfo(String name) throws SQLException {
+        String SQL="Select level,xp,cup,win,lost,mapID FROM playersinfo WHERE name='"+name+"'";
+        Statement sql=connection.prepareStatement(SQL);
+        return sql.executeQuery(SQL);
     }
 }
