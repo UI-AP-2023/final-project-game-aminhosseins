@@ -86,4 +86,60 @@ public class HeroManager {
         }
         if (!isThere)army.put(new PEKKA(),1);
     }
+    public static void removeBarbarian(HashMap<Hero,Integer> army){
+        for (Map.Entry<Hero,Integer> entry:army.entrySet()){
+            if (entry.getKey() instanceof Barbarian){
+                army.put(entry.getKey(),entry.getValue()-1);
+            }
+        }
+    }
+    public static void removeArcher(HashMap<Hero,Integer> army){
+        for (Map.Entry<Hero,Integer> entry:army.entrySet()){
+            if (entry.getKey() instanceof Archer){
+                army.put(entry.getKey(),entry.getValue()-1);
+            }
+        }
+    }
+    public static void removeGiant(HashMap<Hero,Integer> army){
+        for (Map.Entry<Hero,Integer> entry:army.entrySet()){
+            if (entry.getKey() instanceof Giant){
+                army.put(entry.getKey(),entry.getValue()-1);
+            }
+        }
+    }
+    public static void removeGoblin(HashMap<Hero,Integer> army){
+        for (Map.Entry<Hero,Integer> entry:army.entrySet()){
+            if (entry.getKey() instanceof Goblin){
+                army.put(entry.getKey(),entry.getValue()-1);
+            }
+        }
+    }
+    public static void removeMinion(HashMap<Hero,Integer> army){
+        for (Map.Entry<Hero,Integer> entry:army.entrySet()){
+            if (entry.getKey() instanceof Minion){
+                army.put(entry.getKey(),entry.getValue()-1);
+            }
+        }
+    }
+    public static void removeBalloon(HashMap<Hero,Integer> army){
+        for (Map.Entry<Hero,Integer> entry:army.entrySet()){
+            if (entry.getKey() instanceof Balloon){
+                army.put(entry.getKey(),entry.getValue()-1);
+            }
+        }
+    }
+    public static void removeGolem(HashMap<Hero,Integer> army){
+        for (Map.Entry<Hero,Integer> entry:army.entrySet()){
+            if (entry.getKey() instanceof Golem){
+                army.put(entry.getKey(),entry.getValue()-1);
+            }
+        }
+    }
+    public static void removePEKKA(HashMap<Hero,Integer> army){
+        for (Map.Entry<Hero,Integer> entry:army.entrySet()){
+            if (entry.getKey() instanceof PEKKA){
+                army.put(entry.getKey(),entry.getValue()-1);
+            }
+        }
+    }
 }

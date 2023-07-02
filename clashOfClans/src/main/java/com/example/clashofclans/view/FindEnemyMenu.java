@@ -287,6 +287,9 @@ public class FindEnemyMenu {
             btn_start.setScaleY(1);
             dropShadow.setRadius(5);
         });
+        btn_start.addEventHandler(MouseEvent.MOUSE_CLICKED,mouseEvent -> {
+            AttackMenu attackMenu=new AttackMenu(this,player);
+        });
 
         root.getChildren().add(btn_start);
     }
@@ -367,5 +370,61 @@ public class FindEnemyMenu {
         }
 
         root.getChildren().add(vb_army);
+    }
+
+    public Stage getStage() {
+        return stage;
+    }
+
+    public AnchorPane getRoot() {
+        return root;
+    }
+
+    public AnchorPane getEnemyBase() {
+        return enemyBase;
+    }
+
+    public Button getBtn_next() {
+        return btn_next;
+    }
+
+    public Button getBtn_exit() {
+        return btn_exit;
+    }
+
+    public Button getBtn_start() {
+        return btn_start;
+    }
+
+    public Button getBtn_level() {
+        return btn_level;
+    }
+
+    public Label getLbl_name() {
+        return lbl_name;
+    }
+
+    public Label getLbl_cupPlus() {
+        return lbl_cupPlus;
+    }
+
+    public Label getLbl_cupMines() {
+        return lbl_cupMines;
+    }
+
+    public HBox getHb_cup() {
+        return hb_cup;
+    }
+
+    public VBox getVb_army() {
+        return vb_army;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public Player getEnemy() {
+        return enemy;
     }
 }
