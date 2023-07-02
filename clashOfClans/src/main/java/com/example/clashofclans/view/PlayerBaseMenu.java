@@ -147,7 +147,7 @@ public class PlayerBaseMenu {
             dropShadow.setRadius(5);
         });
         btn_trainArmy.addEventHandler(MouseEvent.MOUSE_CLICKED,mouseEvent -> {
-
+            TrainArmyMenu trainArmyMenu=new TrainArmyMenu(stage,player);
         });
 
         root.getChildren().add(btn_trainArmy);
