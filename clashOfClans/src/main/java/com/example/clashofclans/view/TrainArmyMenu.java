@@ -1,5 +1,6 @@
 package com.example.clashofclans.view;
 
+import com.example.clashofclans.control.hero.HeroManager;
 import com.example.clashofclans.model.building.Building;
 import com.example.clashofclans.model.hero.*;
 import com.example.clashofclans.model.player.Player;
@@ -7,14 +8,12 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.TilePane;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
@@ -22,6 +21,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.util.Collection;
+import java.util.Map;
 import java.util.Scanner;
 
 public class TrainArmyMenu {
@@ -68,9 +68,8 @@ public class TrainArmyMenu {
 
         hb_trainQueue.setAlignment(Pos.CENTER_RIGHT);
         hb_trainQueue.setSpacing(5);
-        hb_trainQueue.setPrefWidth(800);
-        hb_trainQueue.setLayoutY(40);
-        hb_trainQueue.setPrefHeight(100);
+        hb_trainQueue.setPrefWidth(785);
+        hb_trainQueue.setPrefHeight(120);
         hb_trainQueue.setBackground(Background.fill(Color.rgb(230,230,230)));
 
         InnerShadow shadow=new InnerShadow();
@@ -78,7 +77,13 @@ public class TrainArmyMenu {
         shadow.setRadius(10);
         hb_trainQueue.setEffect(shadow);
 
-        root.getChildren().add(hb_trainQueue);
+        ScrollPane scrollPane=new ScrollPane();
+        scrollPane.setLayoutY(25);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+        scrollPane.setContent(hb_trainQueue);
+
+        root.getChildren().add(scrollPane);
     }
     private void setTp_troopsSetting(){
         tp_troops=new TilePane();
@@ -145,7 +150,8 @@ public class TrainArmyMenu {
             dropShadow.setRadius(5);
         });
         btn_barbarian.addEventHandler(MouseEvent.MOUSE_CLICKED,mouseEvent -> {
-
+            HeroManager.addBarbarian(player.getArmy());
+            armyChange();
         });
 
         tp_troops.getChildren().add(btn_barbarian);
@@ -168,8 +174,6 @@ public class TrainArmyMenu {
         btn_archer.setBackground(Background.fill(Color.rgb(40,120,220)));
         btn_archer.setPrefWidth(120);
         btn_archer.setPrefHeight(120);
-//        btn_archer.setLayoutY(240);
-//        btn_archer.setLayoutX(245);
 
         InnerShadow innerShadow=new InnerShadow();
         innerShadow.setRadius(20);
@@ -191,7 +195,8 @@ public class TrainArmyMenu {
             dropShadow.setRadius(5);
         });
         btn_archer.addEventHandler(MouseEvent.MOUSE_CLICKED,mouseEvent -> {
-
+            HeroManager.addArcher(player.getArmy());
+            armyChange();
         });
 
         tp_troops.getChildren().add(btn_archer);
@@ -214,8 +219,6 @@ public class TrainArmyMenu {
         btn_giant.setBackground(Background.fill(Color.rgb(40,120,220)));
         btn_giant.setPrefWidth(120);
         btn_giant.setPrefHeight(120);
-//        btn_giant.setLayoutY(240);
-//        btn_giant.setLayoutX(435);
 
         InnerShadow innerShadow=new InnerShadow();
         innerShadow.setRadius(20);
@@ -237,7 +240,8 @@ public class TrainArmyMenu {
             dropShadow.setRadius(5);
         });
         btn_giant.addEventHandler(MouseEvent.MOUSE_CLICKED,mouseEvent -> {
-
+            HeroManager.addGiant(player.getArmy());
+            armyChange();
         });
 
         tp_troops.getChildren().add(btn_giant);
@@ -260,8 +264,6 @@ public class TrainArmyMenu {
         btn_goblin.setBackground(Background.fill(Color.rgb(40,120,220)));
         btn_goblin.setPrefWidth(120);
         btn_goblin.setPrefHeight(120);
-//        btn_goblin.setLayoutY(240);
-//        btn_goblin.setLayoutX(595);
 
         InnerShadow innerShadow=new InnerShadow();
         innerShadow.setRadius(20);
@@ -283,7 +285,8 @@ public class TrainArmyMenu {
             dropShadow.setRadius(5);
         });
         btn_goblin.addEventHandler(MouseEvent.MOUSE_CLICKED,mouseEvent -> {
-
+            HeroManager.addGoblin(player.getArmy());
+            armyChange();
         });
 
         tp_troops.getChildren().add(btn_goblin);
@@ -327,7 +330,8 @@ public class TrainArmyMenu {
             dropShadow.setRadius(5);
         });
         btn_minion.addEventHandler(MouseEvent.MOUSE_CLICKED,mouseEvent -> {
-
+            HeroManager.addMinion(player.getArmy());
+            armyChange();
         });
 
         tp_troops.getChildren().add(btn_minion);
@@ -371,7 +375,8 @@ public class TrainArmyMenu {
             dropShadow.setRadius(5);
         });
         btn_balloon.addEventHandler(MouseEvent.MOUSE_CLICKED,mouseEvent -> {
-
+            HeroManager.addBalloon(player.getArmy());
+            armyChange();
         });
 
         tp_troops.getChildren().add(btn_balloon);
@@ -415,7 +420,8 @@ public class TrainArmyMenu {
             dropShadow.setRadius(5);
         });
         btn_golem.addEventHandler(MouseEvent.MOUSE_CLICKED,mouseEvent -> {
-
+            HeroManager.addGolem(player.getArmy());
+            armyChange();
         });
 
         tp_troops.getChildren().add(btn_golem);
@@ -459,7 +465,8 @@ public class TrainArmyMenu {
             dropShadow.setRadius(5);
         });
         btn_pekka.addEventHandler(MouseEvent.MOUSE_CLICKED,mouseEvent -> {
-
+            HeroManager.addPEKKA(player.getArmy());
+            armyChange();
         });
 
         tp_troops.getChildren().add(btn_pekka);
@@ -506,6 +513,10 @@ public class TrainArmyMenu {
             btn_delete.setScaleY(1);
             dropShadow.setRadius(5);
         });
+        btn_delete.addEventHandler(MouseEvent.MOUSE_CLICKED,mouseEvent -> {
+            player.getArmy().clear();
+            armyChange();
+        });
 
         root.getChildren().add(btn_delete);
     }
@@ -551,8 +562,56 @@ public class TrainArmyMenu {
             btn_save.setScaleY(1);
             dropShadow.setRadius(5);
         });
+        btn_save.addEventHandler(MouseEvent.MOUSE_CLICKED,mouseEvent -> {
+            stage.close();
+        });
 
         root.getChildren().add(btn_save);
+    }
+    private void armyChange(){
+        hb_trainQueue.getChildren().clear();
+        for (Map.Entry<Hero,Integer> entry:player.getArmy().entrySet()){
+            StackPane stackPane=new StackPane();
+            Button btn=new Button();
+
+            ImageView imageView=entry.getKey().getImg_icon();
+            imageView.setFitHeight(90);
+            imageView.setFitWidth(90);
+            btn.setGraphic(imageView);
+
+            Rectangle rectangle=new Rectangle();
+            rectangle.setWidth(90);
+            rectangle.setHeight(90);
+            rectangle.setArcHeight(30);
+            rectangle.setArcWidth(30);
+            btn.setShape(rectangle);
+
+            btn.setBackground(Background.fill(Color.rgb(40,120,220)));
+            btn.setPrefWidth(90);
+            btn.setPrefHeight(90);
+
+            InnerShadow innerShadow=new InnerShadow();
+            innerShadow.setRadius(20);
+            innerShadow.setColor(Color.rgb(40,120,180));
+            DropShadow dropShadow =new DropShadow();
+            dropShadow.setRadius(5);
+            dropShadow.setColor(Color.gray(0.5));
+            dropShadow.setInput(innerShadow);
+            btn.setEffect(dropShadow);
+
+            Label label=new Label("X"+entry.getValue());
+
+            label.setAlignment(Pos.CENTER);
+            label.setFont(Font.font("Impact",30));
+            label.setTextFill(Color.rgb(250,250,250));
+            label.setStyle("-fx-effect: dropshadow( one-pass-box , black , 4 , 0.0 , 1 , 0 )");
+            label.setLayoutX(0);
+            label.setLayoutY(0);
+
+            stackPane.getChildren().add(btn);
+            stackPane.getChildren().add(label);
+            hb_trainQueue.getChildren().add(stackPane);
+        }
     }
 
 }

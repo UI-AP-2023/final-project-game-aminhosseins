@@ -1,6 +1,10 @@
 package com.example.clashofclans.model.player;
 
+import com.example.clashofclans.model.hero.Hero;
 import com.example.clashofclans.model.map.Map;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Player {
     private String name;
@@ -12,6 +16,7 @@ public class Player {
     private int lost;
     private int stars;
     private Map baseMap;
+    private HashMap<Hero,Integer> army;
     public Player(String name,int level,int xp,int cup,int win,int lost,int stars,Map baseMap){
         this.name=name;
         this.level=level;
@@ -21,6 +26,7 @@ public class Player {
         this.lost=lost;
         this.stars=stars;
         this.baseMap=baseMap;
+        this.army=new HashMap<>();
     }
 
     public String getName() {
@@ -57,5 +63,9 @@ public class Player {
 
     public int getStars() {
         return stars;
+    }
+
+    public HashMap<Hero,Integer> getArmy() {
+        return army;
     }
 }
