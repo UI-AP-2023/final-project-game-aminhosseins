@@ -10,10 +10,15 @@ import com.example.clashofclans.model.player.Player;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class PlayerManager {
+    private static ArrayList<Player> enemies;
+    static {
+        enemies=new ArrayList<>();
+    }
     public static void signUpOperation(String name,String password) throws SQLException, DuplicateNameException, InvalidPasswordException {
         isNameDuplicate(name);
         passwordFormatChecker(password);
@@ -31,6 +36,26 @@ public class PlayerManager {
             player=new Player(name,resultSet.getInt(1),resultSet.getInt(2),resultSet.getInt(3),resultSet.getInt(4),resultSet.getInt(5),resultSet.getInt(6),Map.getAllMaps().get(resultSet.getInt(7)-1));
         }
         return player;
+    }
+    public static void readyAttack(String playerName) throws SQLException {
+        ResultSet resultSet=SQLManager.getAllPlayersAttackInfo();
+        while (resultSet.next()){
+            if (!playerName.equals(resultSet.getString(1))){
+                enemies.add(new Player(resultSet.getString(1),resultSet.getInt(2),-1,resultSet.getInt(4),-1,-1,-1,Map.getAllMaps().get(resultSet.getInt(3)-1)));
+            }
+        }
+    }
+    public static Player readyEnemy(){
+        Random random=new Random();
+        return enemies.get(random.nextInt(enemies.size()));
+    }
+    public static int cupPlusCalculate(){
+        Random random=new Random();
+        return random.nextInt(26,34);
+    }
+    public static int cupMinesCalculate(){
+        Random random=new Random();
+        return random.nextInt(-20,-15);
     }
     private static void isNameDuplicate(String name) throws SQLException, DuplicateNameException {
         ArrayList<String> names= SQLManager.getNames();

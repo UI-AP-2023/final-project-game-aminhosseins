@@ -4,6 +4,7 @@ import com.example.clashofclans.control.player.PlayerManager;
 import com.example.clashofclans.model.player.Player;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -99,7 +100,16 @@ public class PlayerBaseMenu {
             dropShadow.setRadius(5);
         });
         btn_attack.addEventHandler(MouseEvent.MOUSE_CLICKED,mouseEvent -> {
-
+            try {
+                FindEnemyMenu findEnemyMenu=new FindEnemyMenu(player);
+                stage.close();
+            }catch (SQLException e){
+                Alert alert=new Alert(Alert.AlertType.ERROR);
+                alert.setContentText(e.getMessage());
+                alert.setTitle("Error");
+                alert.setHeaderText("SQL");
+                alert.show();
+            }
         });
 
         root.getChildren().add(btn_attack);

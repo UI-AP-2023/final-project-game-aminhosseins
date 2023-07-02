@@ -44,6 +44,7 @@ public class TrainArmyMenu {
     public TrainArmyMenu(Stage owner, Player player){
         this.player=player;
         setStageSetting(owner);
+        armyChange();
     }
     private void setStageSetting(Stage owner){
         stage=new Stage();

@@ -17,7 +17,7 @@ import java.sql.SQLException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException, SQLException {
-        //StartMenu startMenu=new StartMenu();
+//        StartMenu startMenu=new StartMenu();
         PlayerBaseMenu playerBaseMenu=new PlayerBaseMenu("amin");
     }
 
