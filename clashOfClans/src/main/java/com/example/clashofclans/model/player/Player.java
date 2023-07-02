@@ -10,14 +10,16 @@ public class Player {
     private int cup;
     private int win;
     private int lost;
+    private int stars;
     private Map baseMap;
-    public Player(String name,int level,int xp,int cup,int win,int lost,Map baseMap){
+    public Player(String name,int level,int xp,int cup,int win,int lost,int stars,Map baseMap){
         this.name=name;
         this.level=level;
         this.xp=xp;
         this.cup=cup;
         this.win=win;
         this.lost=lost;
+        this.stars=stars;
         this.baseMap=baseMap;
     }
 
@@ -51,5 +53,9 @@ public class Player {
 
     public Map getBaseMap() {
         return baseMap;
+    }
+
+    public int getStars() {
+        return stars;
     }
 }

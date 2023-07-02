@@ -292,7 +292,7 @@ public class PlayerBaseMenu {
             dropShadow.setRadius(5);
         });
         btn_profile.addEventHandler(MouseEvent.MOUSE_CLICKED,mouseEvent -> {
-
+            ProfileMenu profileMenu=new ProfileMenu(stage,player);
         });
 
         root.getChildren().add(btn_profile);

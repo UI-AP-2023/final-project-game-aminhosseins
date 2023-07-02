@@ -28,7 +28,7 @@ public class PlayerManager {
         ResultSet resultSet=SQLManager.getPlayerInfo(name);
         Player player=null;
         while (resultSet.next()){
-            player=new Player(name,resultSet.getInt(1),resultSet.getInt(2),resultSet.getInt(3),resultSet.getInt(4),resultSet.getInt(5),Map.getAllMaps().get(resultSet.getInt(6)-1));
+            player=new Player(name,resultSet.getInt(1),resultSet.getInt(2),resultSet.getInt(3),resultSet.getInt(4),resultSet.getInt(5),resultSet.getInt(6),Map.getAllMaps().get(resultSet.getInt(7)-1));
         }
         return player;
     }

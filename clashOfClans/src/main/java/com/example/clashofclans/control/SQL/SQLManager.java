@@ -50,7 +50,7 @@ public class SQLManager {
         return s.toString();
     }
     public static ResultSet getPlayerInfo(String name) throws SQLException {
-        String SQL="Select level,xp,cup,win,lost,mapID FROM playersinfo WHERE name='"+name+"'";
+        String SQL="Select level,xp,cup,win,lost,star,mapID FROM playersinfo WHERE name='"+name+"'";
         Statement sql=connection.prepareStatement(SQL);
         return sql.executeQuery(SQL);
     }
