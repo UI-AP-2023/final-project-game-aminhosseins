@@ -1,9 +1,12 @@
 package com.example.clashofclans.view;
 
 import com.example.clashofclans.control.hero.HeroManager;
+import com.example.clashofclans.control.thread.HeroThread;
 import com.example.clashofclans.model.hero.*;
 import com.example.clashofclans.model.player.Player;
+import javafx.animation.PathTransition;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
@@ -15,9 +18,9 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.*;
 import javafx.scene.text.Font;
+import javafx.util.Duration;
 
 import java.util.Map;
 
@@ -44,9 +47,23 @@ public class AttackMenu {
         setVb_armySetting();
 
         findEnemyMenu.getRoot().addEventHandler(MouseEvent.MOUSE_CLICKED,mouseEvent -> {
-            changeTroop();
-            updateArmy();
-            System.out.println(selectedButton.getId());
+            try {
+                changeTroop();
+                Hero hero=HeroManager.setHero(selectedButton.getId());
+                ImageView heroImg=hero.getImg_troop();
+                heroImg.setX(mouseEvent.getX());
+                heroImg.setY(mouseEvent.getY());
+                findEnemyMenu.getRoot().getChildren().add(heroImg);
+                HeroThread heroThread=new HeroThread(hero,findEnemyMenu.getEnemy().getBaseMap(),mouseEvent.getX(),mouseEvent.getY());
+                heroThread.start();
+                updateArmy();
+            }catch (NullPointerException e){
+                Alert alert=new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Match");
+                alert.setContentText("Please select a uint");
+                alert.show();
+            }
         });
     }
     private void setVb_armySetting(){
@@ -57,8 +74,6 @@ public class AttackMenu {
         vb_army.setPrefSize(100,700);
         vb_army.setBackground(Background.fill(Color.rgb(0,0,0,0.5)));
         vb_army.setLayoutX(1180);
-        this.selectedButton=new Button();
-        this.selectedButton.setId("");
         findEnemyMenu.getRoot().getChildren().remove(findEnemyMenu.getVb_army());
 
         for (Map.Entry<Hero,Integer> entry:player.getArmy().entrySet()){
@@ -90,9 +105,15 @@ public class AttackMenu {
             dropShadow.setInput(innerShadow);
             btn.setEffect(dropShadow);
             btn.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
-                btn.setBorder(Border.stroke(Color.WHITE));
-                this.selectedButton.setBorder(Border.EMPTY);
-                this.selectedButton=btn;
+                if(selectedButton!=null){
+                    btn.setBorder(Border.stroke(Color.WHITE));
+                    this.selectedButton.setBorder(Border.EMPTY);
+                    this.selectedButton=btn;
+                }
+                else {
+                    selectedButton=btn;
+                    selectedButton.setBorder(Border.stroke(Color.WHITE));
+                }
             });
 
             setBtnID(btn,entry.getKey());
@@ -173,9 +194,15 @@ public class AttackMenu {
                 dropShadow.setInput(innerShadow);
                 btn.setEffect(dropShadow);
                 btn.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
-                    btn.setBorder(Border.stroke(Color.WHITE));
-                    this.selectedButton.setBorder(Border.EMPTY);
-                    this.selectedButton=btn;
+                    if(selectedButton!=null){
+                        btn.setBorder(Border.stroke(Color.WHITE));
+                        this.selectedButton.setBorder(Border.EMPTY);
+                        this.selectedButton=btn;
+                    }
+                    else {
+                        selectedButton=btn;
+                        selectedButton.setBorder(Border.stroke(Color.WHITE));
+                    }
                 });
 
                 setBtnID(btn,entry.getKey());
@@ -193,6 +220,7 @@ public class AttackMenu {
                 stackPane.getChildren().add(label);
                 vb_army.getChildren().add(stackPane);
             }
+            else selectedButton=null;
         }
     }
     private void changeTroop(){
@@ -224,5 +252,17 @@ public class AttackMenu {
             default:
                 break;
         }
+    }
+    public void move(ImageView heroImg,double X,double Y){
+        Path path = new Path();
+        MoveTo moveTo = new MoveTo(X,Y);
+        LineTo lineTo = new LineTo(100, 100);
+        path.getElements().add(moveTo);
+        path.getElements().add(lineTo);
+        PathTransition transition = new PathTransition();
+        transition.setNode(heroImg);
+        transition.setDuration(Duration.millis(8000));
+        transition.setPath(path);
+        transition.play();
     }
 }

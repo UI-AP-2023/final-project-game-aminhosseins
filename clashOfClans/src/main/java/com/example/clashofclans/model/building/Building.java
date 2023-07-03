@@ -28,4 +28,28 @@ public abstract class Building{
     public ImageView getBuildingPhoto() {
         return buildingPhoto;
     }
+
+    public int getHP() {
+        return HP;
+    }
+
+    public int getPercent() {
+        return percent;
+    }
+
+    public double getX() {
+        return X;
+    }
+
+    public double getY() {
+        return Y;
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public double getHeight() {
+        return height;
+    }
 }

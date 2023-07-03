@@ -243,4 +243,8 @@ public class Map {
         buildings.add(new SmallCabin(635,465));
         return buildings;
     }
+
+    public ArrayList<Building> getBuildings() {
+        return buildings;
+    }
 }

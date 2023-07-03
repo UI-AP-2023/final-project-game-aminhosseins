@@ -1,6 +1,7 @@
 package com.example.clashofclans;
 
 import com.example.clashofclans.control.SQL.SQLManager;
+import com.example.clashofclans.control.hero.HeroManager;
 import com.example.clashofclans.model.map.Map;
 import com.example.clashofclans.view.ChoosingMapMenu;
 import com.example.clashofclans.view.PlayerBaseMenu;

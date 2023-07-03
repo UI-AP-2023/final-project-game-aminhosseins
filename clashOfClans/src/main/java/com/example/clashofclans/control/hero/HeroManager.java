@@ -1,6 +1,13 @@
 package com.example.clashofclans.control.hero;
 
+import com.example.clashofclans.control.thread.HeroThread;
 import com.example.clashofclans.model.hero.*;
+import javafx.animation.PathTransition;
+import javafx.scene.image.ImageView;
+import javafx.scene.shape.LineTo;
+import javafx.scene.shape.MoveTo;
+import javafx.scene.shape.Path;
+import javafx.util.Duration;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -141,5 +148,49 @@ public class HeroManager {
                 army.put(entry.getKey(),entry.getValue()-1);
             }
         }
+    }
+    public static int calculateDistance(int X1,int Y1,int X2,int Y2){
+        return (int) Math.sqrt(((X1-X2)*(X1-X2))+((Y1-Y2)*(Y1-Y2)));
+    }
+    public static Hero setHero(String name){
+        switch (name){
+            case "barbarian":
+                return new Barbarian();
+            case "archer":
+                return new Archer();
+            case "giant":
+                return new Giant();
+            case "goblin":
+                return new Goblin();
+            case "minion":
+                return new Minion();
+            case "balloon":
+                return new Balloon();
+            case "golem":
+                return new Golem();
+            case "pekka":
+                return new PEKKA();
+            default:
+                break;
+        }
+        return null;
+    }
+    public static void move( ImageView heroImg, double X1, double Y1, double X2, double Y2){
+        Path path = new Path();
+        MoveTo moveTo = new MoveTo(X1,Y1);
+        LineTo lineTo = new LineTo(X2, Y2);
+        path.getElements().add(moveTo);
+        path.getElements().add(lineTo);
+        PathTransition transition = new PathTransition();
+        transition.setNode(heroImg);
+        transition.setDuration(Duration.millis(8000));
+        transition.setPath(path);
+        transition.play();
+        transition.setOnFinished(actionEvent -> {
+
+        });
+    }
+    public static void myWait(){
+
     }
 }
