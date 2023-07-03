@@ -6,7 +6,7 @@ import com.example.clashofclans.model.map.Map;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Player {
+public class Player implements Comparable<Player>{
     private String name;
     private int level;
     private int xp;
@@ -67,5 +67,28 @@ public class Player {
 
     public HashMap<Hero,Integer> getArmy() {
         return army;
+    }
+
+    @Override
+    public int compareTo(Player o) {
+        if (this.cup>o.cup)return 1;
+        else if (this.cup<o.cup)return -1;
+        else {
+            if (this.level>o.level)return 1;
+            else if (this.level<o.level)return -1;
+            else {
+                if (this.stars>o.stars)return 1;
+                else if (this.stars<o.stars)return -1;
+                else {
+                    if(this.win>o.win)return 1;
+                    else if(this.win<o.win)return -1;
+                    else {
+                        if (this.lost<o.lost)return 1;
+                        else if (this.lost>o.lost)return -1;
+                        else return 0;
+                    }
+                }
+            }
+        }
     }
 }

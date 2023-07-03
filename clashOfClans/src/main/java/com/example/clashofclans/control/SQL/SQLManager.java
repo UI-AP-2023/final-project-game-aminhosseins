@@ -59,4 +59,9 @@ public class SQLManager {
         Statement sql=connection.prepareStatement(SQL);
         return sql.executeQuery(SQL);
     }
+    public static ResultSet getAllLeaderBoardInfo()throws SQLException{
+        String SQL="Select name,level,win,lost,star,mapID,cup FROM playersinfo";
+        Statement sql=connection.prepareStatement(SQL);
+        return sql.executeQuery(SQL);
+    }
 }

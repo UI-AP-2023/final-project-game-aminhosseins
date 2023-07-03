@@ -254,7 +254,15 @@ public class PlayerBaseMenu {
             dropShadow.setRadius(5);
         });
         btn_leaderBoard.addEventHandler(MouseEvent.MOUSE_CLICKED,mouseEvent -> {
-
+            try {
+                LeaderBoardMenu leaderBoardMenu=new LeaderBoardMenu(stage);
+            }catch (SQLException e){
+                Alert alert=new Alert(Alert.AlertType.ERROR);
+                alert.setContentText(e.getMessage());
+                alert.setTitle("Error");
+                alert.setHeaderText("SQL");
+                alert.show();
+            }
         });
 
         root.getChildren().add(btn_leaderBoard);

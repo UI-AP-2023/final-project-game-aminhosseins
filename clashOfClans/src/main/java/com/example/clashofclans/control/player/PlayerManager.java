@@ -57,6 +57,14 @@ public class PlayerManager {
         Random random=new Random();
         return random.nextInt(-20,-15);
     }
+    public static ArrayList<Player> readyLeaderBoard() throws SQLException {
+        ArrayList<Player> players=new ArrayList<>();
+        ResultSet resultSet=SQLManager.getAllLeaderBoardInfo();
+        while (resultSet.next()){
+            players.add(new Player(resultSet.getString(1),resultSet.getInt(2),0,resultSet.getInt(7),resultSet.getInt(3),resultSet.getInt(4),resultSet.getInt(5),Map.getAllMaps().get(resultSet.getInt(6)-1)));
+        }
+        return players;
+    }
     private static void isNameDuplicate(String name) throws SQLException, DuplicateNameException {
         ArrayList<String> names= SQLManager.getNames();
         for (String s:names){
