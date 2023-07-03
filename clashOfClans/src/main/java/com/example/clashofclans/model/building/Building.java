@@ -10,9 +10,10 @@ public abstract class Building{
     private double Y;
     private double width;
     private double height;
+    private boolean isDestroyed;
     private ImageView buildingPhoto;
     public Building(int HP,int percent,double X,double Y,double width,double height,String imgURL){
-        this.HP=HP;
+        this.HP=1000;
         this.percent=percent;
         this.X=X;
         this.Y=Y;
@@ -23,6 +24,7 @@ public abstract class Building{
         buildingPhoto.setY(Y);
         buildingPhoto.setFitHeight(height);
         buildingPhoto.setFitWidth(width);
+        isDestroyed=false;
     }
 
     public ImageView getBuildingPhoto() {
@@ -51,5 +53,17 @@ public abstract class Building{
 
     public double getHeight() {
         return height;
+    }
+
+    public void setHP(int HP) {
+        this.HP = HP;
+    }
+
+    public boolean isDestroyed() {
+        return isDestroyed;
+    }
+
+    public void setDestroyed(boolean destroyed) {
+        isDestroyed = destroyed;
     }
 }

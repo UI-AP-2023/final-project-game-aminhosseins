@@ -175,22 +175,19 @@ public class HeroManager {
         }
         return null;
     }
-    public static void move( ImageView heroImg, double X1, double Y1, double X2, double Y2){
-        Path path = new Path();
-        MoveTo moveTo = new MoveTo(X1,Y1);
-        LineTo lineTo = new LineTo(X2, Y2);
-        path.getElements().add(moveTo);
-        path.getElements().add(lineTo);
-        PathTransition transition = new PathTransition();
-        transition.setNode(heroImg);
-        transition.setDuration(Duration.millis(8000));
-        transition.setPath(path);
-        transition.play();
-        transition.setOnFinished(actionEvent -> {
-
-        });
-    }
-    public static void myWait(){
-
-    }
+//    public static void move( ImageView heroImg, double X1, double Y1, double X2, double Y2){
+//        Path path = new Path();
+//        MoveTo moveTo = new MoveTo(X1,Y1);
+//        LineTo lineTo = new LineTo(X2, Y2);
+//        path.getElements().add(moveTo);
+//        path.getElements().add(lineTo);
+//        PathTransition transition = new PathTransition();
+//        transition.setNode(heroImg);
+//        transition.setDuration(Duration.millis(8000));
+//        transition.setPath(path);
+//        transition.play();
+//        transition.setOnFinished(actionEvent -> {
+//
+//        });
+//    }
 }

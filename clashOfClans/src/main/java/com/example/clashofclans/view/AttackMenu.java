@@ -1,6 +1,7 @@
 package com.example.clashofclans.view;
 
 import com.example.clashofclans.control.hero.HeroManager;
+import com.example.clashofclans.control.thread.BuildingThread;
 import com.example.clashofclans.control.thread.HeroThread;
 import com.example.clashofclans.model.hero.*;
 import com.example.clashofclans.model.player.Player;
@@ -33,6 +34,8 @@ public class AttackMenu {
         this.player=player;
         this.findEnemyMenu=findEnemyMenu;
         setAttackSetting();
+//        BuildingThread buildingThread=new BuildingThread();
+//        buildingThread.start();
     }
     private void setAttackSetting(){
         findEnemyMenu.getRoot().getChildren().remove(findEnemyMenu.getBtn_next());
@@ -54,7 +57,7 @@ public class AttackMenu {
                 heroImg.setX(mouseEvent.getX());
                 heroImg.setY(mouseEvent.getY());
                 findEnemyMenu.getRoot().getChildren().add(heroImg);
-                HeroThread heroThread=new HeroThread(hero,findEnemyMenu.getEnemy().getBaseMap(),mouseEvent.getX(),mouseEvent.getY());
+                HeroThread heroThread=new HeroThread(hero,findEnemyMenu.getEnemy().getBaseMap(),mouseEvent.getX(),mouseEvent.getY(),findEnemyMenu.getRoot());
                 heroThread.start();
                 updateArmy();
             }catch (NullPointerException e){
@@ -252,17 +255,5 @@ public class AttackMenu {
             default:
                 break;
         }
-    }
-    public void move(ImageView heroImg,double X,double Y){
-        Path path = new Path();
-        MoveTo moveTo = new MoveTo(X,Y);
-        LineTo lineTo = new LineTo(100, 100);
-        path.getElements().add(moveTo);
-        path.getElements().add(lineTo);
-        PathTransition transition = new PathTransition();
-        transition.setNode(heroImg);
-        transition.setDuration(Duration.millis(8000));
-        transition.setPath(path);
-        transition.play();
     }
 }
