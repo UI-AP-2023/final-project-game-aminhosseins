@@ -13,7 +13,7 @@ public abstract class Building{
     private boolean isDestroyed;
     private ImageView buildingPhoto;
     public Building(int HP,int percent,double X,double Y,double width,double height,String imgURL){
-        this.HP=1000;
+        this.HP=HP;
         this.percent=percent;
         this.X=X;
         this.Y=Y;

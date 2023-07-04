@@ -54,4 +54,8 @@ public abstract class Hero {
     public ImageView getImg_icon() {
         return img_icon;
     }
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName()+"\nHP "+HP+"\nDMG "+DMG+"\nSpeed "+speed+"\nrange "+range+"\nTarget "+target.toString()+"\nSpace "+space;
+    }
 }

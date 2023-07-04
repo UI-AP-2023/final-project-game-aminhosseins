@@ -23,6 +23,7 @@ import javafx.stage.Stage;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class LeaderBoardMenu {
     private Stage stage;
@@ -33,6 +34,7 @@ public class LeaderBoardMenu {
     private ArrayList<Player> players;
     public LeaderBoardMenu(Stage owner) throws SQLException {
         this.players= PlayerManager.readyLeaderBoard();
+        Collections.sort(this.players);
         setStageSetting(owner);
     }
     private void setStageSetting(Stage owner){
@@ -73,7 +75,7 @@ public class LeaderBoardMenu {
 
         scp_players.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scp_players.setPrefWidth(785);
-        scp_players.setPrefHeight(500);
+        scp_players.setPrefHeight(450);
         scp_players.setLayoutY(100);
 //        scp_players.setBackground(Background.fill(Color.rgb(240,240,240)));
 

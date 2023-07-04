@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Tooltip;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.ImageView;
@@ -130,6 +131,7 @@ public class TrainArmyMenu {
         btn_barbarian.setBackground(Background.fill(Color.rgb(40,120,220)));
         btn_barbarian.setPrefWidth(120);
         btn_barbarian.setPrefHeight(120);
+        btn_barbarian.setTooltip(new Tooltip(new Barbarian().toString()));
 
         InnerShadow innerShadow=new InnerShadow();
         innerShadow.setRadius(20);
@@ -175,6 +177,7 @@ public class TrainArmyMenu {
         btn_archer.setBackground(Background.fill(Color.rgb(40,120,220)));
         btn_archer.setPrefWidth(120);
         btn_archer.setPrefHeight(120);
+        btn_archer.setTooltip(new Tooltip(new Archer().toString()));
 
         InnerShadow innerShadow=new InnerShadow();
         innerShadow.setRadius(20);
@@ -220,6 +223,7 @@ public class TrainArmyMenu {
         btn_giant.setBackground(Background.fill(Color.rgb(40,120,220)));
         btn_giant.setPrefWidth(120);
         btn_giant.setPrefHeight(120);
+        btn_giant.setTooltip(new Tooltip(new Giant().toString()));
 
         InnerShadow innerShadow=new InnerShadow();
         innerShadow.setRadius(20);
@@ -265,6 +269,7 @@ public class TrainArmyMenu {
         btn_goblin.setBackground(Background.fill(Color.rgb(40,120,220)));
         btn_goblin.setPrefWidth(120);
         btn_goblin.setPrefHeight(120);
+        btn_goblin.setTooltip(new Tooltip(new Goblin().toString()));
 
         InnerShadow innerShadow=new InnerShadow();
         innerShadow.setRadius(20);
@@ -310,6 +315,7 @@ public class TrainArmyMenu {
         btn_minion.setBackground(Background.fill(Color.rgb(40,120,220)));
         btn_minion.setPrefWidth(120);
         btn_minion.setPrefHeight(120);
+        btn_minion.setTooltip(new Tooltip(new Minion().toString()));
 
         InnerShadow innerShadow=new InnerShadow();
         innerShadow.setRadius(20);
@@ -355,6 +361,7 @@ public class TrainArmyMenu {
         btn_balloon.setBackground(Background.fill(Color.rgb(40,120,220)));
         btn_balloon.setPrefWidth(120);
         btn_balloon.setPrefHeight(120);
+        btn_balloon.setTooltip(new Tooltip(new Balloon().toString()));
 
         InnerShadow innerShadow=new InnerShadow();
         innerShadow.setRadius(20);
@@ -400,6 +407,7 @@ public class TrainArmyMenu {
         btn_golem.setBackground(Background.fill(Color.rgb(40,120,220)));
         btn_golem.setPrefWidth(120);
         btn_golem.setPrefHeight(120);
+        btn_golem.setTooltip(new Tooltip(new Golem().toString()));
 
         InnerShadow innerShadow=new InnerShadow();
         innerShadow.setRadius(20);
@@ -445,6 +453,7 @@ public class TrainArmyMenu {
         btn_pekka.setBackground(Background.fill(Color.rgb(40,120,220)));
         btn_pekka.setPrefWidth(120);
         btn_pekka.setPrefHeight(120);
+        btn_pekka.setTooltip(new Tooltip(new PEKKA().toString()));
 
         InnerShadow innerShadow=new InnerShadow();
         innerShadow.setRadius(20);
