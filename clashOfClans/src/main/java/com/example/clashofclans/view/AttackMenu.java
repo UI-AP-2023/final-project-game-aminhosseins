@@ -3,6 +3,7 @@ package com.example.clashofclans.view;
 import com.example.clashofclans.control.hero.HeroManager;
 import com.example.clashofclans.control.thread.BuildingThread;
 import com.example.clashofclans.control.thread.HeroThread;
+import com.example.clashofclans.model.building.Building;
 import com.example.clashofclans.model.hero.*;
 import com.example.clashofclans.model.player.Player;
 import javafx.animation.PathTransition;
@@ -34,8 +35,6 @@ public class AttackMenu {
         this.player=player;
         this.findEnemyMenu=findEnemyMenu;
         setAttackSetting();
-//        BuildingThread buildingThread=new BuildingThread();
-//        buildingThread.start();
     }
     private void setAttackSetting(){
         findEnemyMenu.getRoot().getChildren().remove(findEnemyMenu.getBtn_next());

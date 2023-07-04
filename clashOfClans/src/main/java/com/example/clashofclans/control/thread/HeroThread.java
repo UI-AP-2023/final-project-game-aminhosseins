@@ -55,6 +55,7 @@ public class HeroThread extends Thread{
             mySleep(100);
             if (target.getBuildingPhoto().getBoundsInParent().intersects(hero.getImg_troop().getBoundsInParent())&&!target.isDestroyed()){
                 attack();
+                calculateClosestBuilding(map.getBuildings());
             }
             if (hero.getImg_troop().getX()>750){
                 System.out.println("finish");
@@ -92,6 +93,8 @@ public class HeroThread extends Thread{
                 target.setDestroyed(true);
                 root.getChildren().remove(target);
                 System.out.println("building destroyed");
+                X0=target.getX();
+                Y0=target.getY();
                 break;
             }
         }
@@ -100,7 +103,6 @@ public class HeroThread extends Thread{
     public void run() {
         calculateClosestBuilding(map.getBuildings());
         move();
-        System.out.println("end move "+Thread.currentThread().threadId()+hero.getClass());
 
     }
     public void myWait(){
