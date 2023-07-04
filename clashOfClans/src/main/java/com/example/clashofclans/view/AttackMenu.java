@@ -46,7 +46,6 @@ public class AttackMenu {
         label.setTextFill(Color.rgb(250,250,250));
         label.setStyle("-fx-effect: dropshadow( one-pass-box , black , 4 , 0.0 , 1 , 0 )");
         findEnemyMenu.getBtn_exit().setGraphic(label);
-        setVb_armySetting();
 
         findEnemyMenu.getRoot().addEventHandler(MouseEvent.MOUSE_CLICKED,mouseEvent -> {
             try {
